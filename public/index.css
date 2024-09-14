@@ -1,0 +1,243 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #7fff00, #00ff00, #00ff7f, #00ffff, #007fff, #0000ff, #7f00ff, #ff00ff, #ff007f);
+    background-size: 300% 300%;
+    animation: rainbow 10s ease infinite;
+    color: white;
+    line-height: 1.6;
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+header, footer {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    text-align: center;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+}
+
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.info-item {
+    flex: 1 1 150px; /* Giảm từ 200px xuống 150px */
+    padding: 8px; /* Giảm padding */
+    border: 1px solid white; /* Giảm độ dày viền */
+    border-radius: 6px; /* Giảm border radius */
+    background-color: var(--background-color);
+    font-size: 0.9em; /* Giảm kích thước font */
+}
+
+.info-item p {
+    margin: 0; /* Loại bỏ margin mặc định của p */
+}
+
+.info-item a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.info-item a:hover {
+    color: white;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+.api-grid, .canvas-grid, .image-grid, .tool-grid, .game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.api-grid a, .canvas-grid a, .image-grid a, .tool-grid a, .game-grid a {
+    display: block;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.api-grid a:hover, .canvas-grid a:hover, .image-grid a:hover, .tool-grid a:hover, .game-grid a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.snowflakes {
+    position: fixed;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.snowflake {
+    color: #fff;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    text-shadow: 0 0 5px #000;
+    position: fixed;
+    top: -10%;
+    z-index: 9999;
+    user-select: none;
+    cursor: default;
+    animation-name: snowflakes-fall, snowflakes-shake;
+    animation-duration: 10s, 3s;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+    animation-play-state: running, running;
+}
+
+.snowflake:nth-of-type(0) {
+    left: 1%;
+    animation-delay: 0s, 0s;
+}
+
+.snowflake:nth-of-type(1) {
+    left: 10%;
+    animation-delay: 1s, 1s;
+}
+
+.snowflake:nth-of-type(2) {
+    left: 20%;
+    animation-delay: 6s, 0.5s;
+}
+
+.snowflake:nth-of-type(3) {
+    left: 30%;
+    animation-delay: 4s, 2s;
+}
+
+.snowflake:nth-of-type(4) {
+    left: 40%;
+    animation-delay: 2s, 2s;
+}
+
+.snowflake:nth-of-type(5) {
+    left: 50%;
+    animation-delay: 8s, 3s;
+}
+
+.snowflake:nth-of-type(6) {
+    left: 60%;
+    animation-delay: 6s, 2s;
+}
+
+.snowflake:nth-of-type(7) {
+    left: 70%;
+    animation-delay: 2.5s, 1s;
+}
+
+.snowflake:nth-of-type(8) {
+    left: 80%;
+    animation-delay: 1s, 0s;
+}
+
+.snowflake:nth-of-type(9) {
+    left: 90%;
+    animation-delay: 3s, 1.5s;
+}
+
+.snowflake:nth-of-type(10) {
+    left: 25%;
+    animation-delay: 2s, 0s;
+}
+
+.snowflake:nth-of-type(11) {
+    left: 65%;
+    animation-delay: 4s, 2.5s;
+}
+
+@keyframes snowflakes-fall {
+    0% {
+        top: -10%;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+@keyframes snowflakes-shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(80px);
+    }
+}
+
+@media (max-width: 768px) {
+    .info {
+        flex-direction: row; /* Thay đổi từ column sang row */
+        justify-content: center;
+    }
+    
+    .info-item {
+        flex-basis: calc(50% - 10px); /* 2 cột trên điện thoại */
+        font-size: 0.8em; /* Giảm font size thêm trên mobile */
+    }
+    
+    .api-grid, .canvas-grid, .image-grid, .tool-grid, .game-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 cột thay vì 1 */
+        gap: 10px; /* Giảm khoảng cách giữa các item */
+    }
+}
+
+@media (max-width: 480px) {
+    .info-item {
+        flex-basis: 100%; /* 1 cột khi màn hình rất nhỏ */
+    }
+    
+    .api-grid, .canvas-grid, .image-grid, .tool-grid, .game-grid {
+        grid-template-columns: 1fr; /* 1 cột khi màn hình rất nhỏ */
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    margin-bottom: 20px;
+    position: static; /* Đảm bảo h2 không bị fixed */
+    text-align: center; /* Căn giữa tiêu đề */
+    color: white; /* Đảm bảo màu chữ phù hợp */
+}
+
+body, h1, h2, h3, h4, h5, h6, p, a {
+    position: static !important;
+}
